@@ -23,12 +23,13 @@ public class ExcelUtils {
 	static ArrayList<String> stockcodes = new ArrayList<String>();
 	static Map<String, Object[]> data = new HashMap<String, Object[]>();
 	//static String excelFilePath = "C:\\Users\\Akshay\\Desktop\\stocks.xlsx";
-	static String excelFilePath = ".\\src\\main\\resources\\stocks.xlsx";
+	static String excelFilePath = "\\Moneycontrol\\src\\main\\resources\\stocks.xlsx";
 
 
 	final int sheetNo= 0;
-	public static void main(String[] args) throws Exception {
-
+	public static void main(String[] args) throws Exception
+	{
+		System.out.println(excelFilePath+"**********");
 			ExcelUtils excel = new ExcelUtils();
 			stockcodes = excel.readExcel();
 			data = excel.getData(stockcodes);
