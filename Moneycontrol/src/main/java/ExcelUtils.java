@@ -1,4 +1,4 @@
-
+ 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,10 +23,10 @@ public class ExcelUtils {
 	static ArrayList<String> stockcodes = new ArrayList<String>();
 	static Map<String, Object[]> data = new HashMap<String, Object[]>();
 	//static String excelFilePath = "C:\\Users\\Akshay\\Desktop\\stocks.xlsx";
-	static String excelFilePath = "\\Moneycontrol\\src\\main\\resources\\stocks.xlsx";
+	static String excelFilePath = "C:\\Users\\Dwaghmod\\OneDrive - Capgemini\\Desktop\\stoock.xlsx";
 
 
-	final int sheetNo= 0;
+	final int sheetNo= 2;
 	public static void main(String[] args) throws Exception
 	{
 		System.out.println(excelFilePath+"**********");
@@ -35,7 +35,7 @@ public class ExcelUtils {
 			data = excel.getData(stockcodes);
 			excel.writeExcel(data);
 
-	}
+	} 
 
 	public ArrayList<String> readExcel() throws Exception {
 		try {
@@ -46,6 +46,7 @@ public class ExcelUtils {
 			for (int rowIndex = 0; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
 				Row row = sheet.getRow(rowIndex);
 				Cell cell = row.getCell(1);
+				System.out.println(cell.getStringCellValue());
 				stockcodes.add(cell.getStringCellValue());
 			}
 
@@ -66,10 +67,10 @@ public class ExcelUtils {
 			int statusCode = response.getStatusCode();
 			Map<String, String> company = response.jsonPath().getMap("data");
 			System.out.println(company.get("company") + "," + company.get("symbol") + "," + company.get("pricecurrent")
-					+ "," + company.get("52H"));
+					+ "," + company.get("52H")+ "," + company.get("52L")+","+company.get("SC_SUBSEC")+company.get("HP")+company.get("LP"));
 
 			data.put(stockcodes.get(i).toString(), new Object[] { company.get("company"), company.get("symbol"),
-					company.get("pricecurrent"), company.get("52H") });
+					company.get("pricecurrent"),company.get("SC_SUBSEC"),company.get("HP"),company.get("LP")});
 
 		}
 		return data;
@@ -98,7 +99,7 @@ public class ExcelUtils {
 
 
 				System.out.println();
-				if(i==2||i==3)
+				if(i==2||i==3||i==4||i==5||i==6||i==7)
 				{
 
 				Cell cell1 = row.createCell(cellid);
